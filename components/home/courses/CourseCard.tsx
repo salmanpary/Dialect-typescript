@@ -26,7 +26,7 @@ const CourseCard = ({
   path,
 }: Props) => {
   return (
-    <div className="border-2 border-blue rounded-2xl p-2 w-[365px] h-[380px] shadow-lg">
+    <div className="border-2 border-grey rounded-2xl p-2 w-[365px] h-[380px] shadow-lg">
       <Image
         src={imageurl}
         width={342.56}
