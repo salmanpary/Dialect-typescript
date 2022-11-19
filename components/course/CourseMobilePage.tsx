@@ -12,7 +12,10 @@ interface courseDetails {
   coursedetails: {
     title: string;
     description: string;
-    duration: number;
+    duration: {
+      hours?: number;
+      minutes?: number;
+    };
     lessons: number;
     instructor: string;
     language: string;
@@ -21,8 +24,8 @@ interface courseDetails {
     imageurl: string;
     discountprice: number;
     price: number;
-    hours: number;
-    minutes: number;
+    hours?: number;
+    minutes?: number;
     sections: number;
     includes: {
       imageurl: string;
