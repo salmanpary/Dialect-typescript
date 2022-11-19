@@ -29,17 +29,17 @@ const LaptopNavbar = () => {
       <nav>
         <div className="flex justify-between pt-2 px-36">
           <div className="cursor-pointer">
-
-          <Image
-            src="/icons/dialectlogo.svg"
-            width={180}
-            height={180}
-            alt=""
-     
-            onClick={() => {
-              router.push("/");
-            }}
-          />
+            <Image
+              src="/icons/logo.svg"
+              width={180}
+              height={180}
+              alt=""
+              quality={100}
+              priority
+              onClick={() => {
+                router.push("/");
+              }}
+            />
           </div>
 
           <ul className="flex justify-between items-center gap-8 font-semibold text-base">

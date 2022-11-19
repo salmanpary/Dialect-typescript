@@ -6,8 +6,8 @@ interface CoursePriceProps {
   imageurl: string;
   discountprice: number;
   price: number;
-  hours: number;
-  minutes: number;
+  hours?: number;
+  minutes?: number;
   sections: number;
   includes: {
     imageurl: string;
@@ -24,7 +24,7 @@ const CoursePrice = ({
   includes,
 }: CoursePriceProps) => {
   return (
-    <div className="w-screen sm:w-80 rounded-2xl shadow-2xl p-6 bg-white">
+    <div className="w-screen sm:w-[340px] rounded-2xl shadow-xl border-2 border-grey p-6 bg-white">
       <Image
         src={imageurl}
         alt=""
@@ -35,12 +35,12 @@ const CoursePrice = ({
 
       <div className="flex justify-between p-4">
         <div className="flex flex-col">
-          <div className="text-base text-coursediscount px-2 ">
-            <span className={CoursePriceStyle.strikethrough}>
-              ₹ {discountprice}
-            </span>
+          <div className="text-base text-coursediscount px-2 whitespace-nowrap">
+            <span className={CoursePriceStyle.strikethrough}>₹ {price}</span>
           </div>
-          <div className="text-2xl sm:text-3xl font-bold text-courseheading">₹ {price}</div>
+          <div className="text-2xl sm:text-3xl font-bold text-courseheading whitespace-nowrap">
+            ₹ {discountprice}
+          </div>
         </div>
         <div className="flex flex-col gap-1 mt-1 font-semibold">
           <div className="flex gap-2">
@@ -52,7 +52,7 @@ const CoursePrice = ({
               height={20}
             />
             <span>
-              {hours}hr {minutes}min
+              {hours && `${hours}hr`} {minutes && `${minutes}min`}
             </span>
           </div>
           <div className="flex gap-2">
@@ -63,7 +63,7 @@ const CoursePrice = ({
               width={20}
               height={20}
             />
-            <span>{sections} Sections</span>
+            <span className="whitespace-nowrap">{sections} Sections</span>
           </div>
         </div>
       </div>
@@ -82,7 +82,9 @@ const CoursePrice = ({
                 width={20}
                 height={20}
               />
-              <span className="font-semibold whitespace-nowrap">{item.heading}</span>
+              <span className="font-semibold whitespace-nowrap">
+                {item.heading}
+              </span>
             </div>
           );
         })}

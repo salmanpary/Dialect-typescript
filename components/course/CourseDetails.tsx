@@ -3,7 +3,10 @@ import React from "react";
 interface CourseDetailsProps {
   title: string;
   description: string;
-  duration: number;
+  duration: {
+    hours?: number;
+    minutes?: number;
+  };
   lessons: number;
   instructor: string;
   language: string;
@@ -21,26 +24,29 @@ const CourseDetails = ({
       <h1 className="font-semibold text-2xl new4:text-lg">{title}</h1>
       <h2 className="pt-2 text-xs">{description}</h2>
       <div className="flex justify-between p-2 pt-3 md:text-sm">
-        <div className="flex gap-10">
+        <div className="flex gap-4">
           <div className="flex gap-2">
             <Image
               src="/icons/video-white.svg"
               width={20}
               height={20}
-              className="max-h-4 mt-1 md:mt-0.5"
+              className="max-h-4 mt-0.5 md:mt-0.5"
               alt=""
             />
-            <span className="whitespace-nowrap">{duration} Hours</span>
+            <span className="whitespace-nowrap text-sm">
+              {duration.hours} Hours &nbsp;
+              {duration.minutes && `${duration.minutes}min`}
+            </span>
           </div>
           <div className="flex gap-2">
             <Image
               src="/icons/cap-white.svg"
               width={20}
               height={20}
-              className="max-h-4 mt-1 md:mt-0.5"
+              className="max-h-4 mt-0.5 md:mt-0.5"
               alt=""
             />
-            <span className="whitespace-nowrap">{lessons} lessons</span>
+            <span className="whitespace-nowrap text-sm">{lessons} lessons</span>
           </div>
         </div>
         <div>
@@ -54,7 +60,7 @@ const CourseDetails = ({
         </div>
       </div>
       <div className="flex justify-between pt-1 px-2">
-        <div className="flex gap-2 p-2 text-sm">
+        <div className="flex gap-2 text-sm">
           <h2>Instructor</h2>
           <div className="line border-l-2 h-4 mt-1 text-coursecardline"></div>
           <h2>{instructor}</h2>

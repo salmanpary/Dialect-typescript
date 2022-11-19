@@ -8,7 +8,7 @@ interface Props {
   instructor: string;
   time: {
     hours?: number;
-    minutes: number;
+    minutes?: number;
   };
   sections: number;
   discountprice: number | undefined;
@@ -26,7 +26,7 @@ const CourseCard = ({
   path,
 }: Props) => {
   return (
-    <div className="border rounded-2xl p-2 w-[365px] h-[380px] shadow-md ">
+    <div className="border-2 border-blue rounded-2xl p-2 w-[365px] h-[380px] shadow-lg">
       <Image
         src={imageurl}
         width={342.56}
@@ -51,8 +51,7 @@ const CourseCard = ({
           />
           <div className="flex gap-1 text-sm">
             <span className="whitespace-nowrap">
-              {time.hours && <span>{time.hours} Hr</span>} {time.minutes}{" "}
-              Minutes
+              {time.hours && <span>{time.hours} Hr</span>} {time.minutes && <span>{time.minutes} Min</span>}
             </span>
           </div>
         </div>
@@ -71,16 +70,16 @@ const CourseCard = ({
       </div>
 
       <div className="text-base text-coursediscount px-2 py-1 h-8">
-        {discountprice && (
+        {price && (
           <span className={CourseCardStyle.strikethrough}>
-            ₹ {discountprice}
+            ₹ {price}
           </span>
         )}
       </div>
 
       <div>
         <div className={`flex justify-between p-2`}>
-          <div className="text-xl font-bold">₹ {price}</div>
+          <div className="text-xl font-bold">₹ {discountprice}</div>
           <Link href={`/${path}`}>
             <div className="text-bluebutton border rounded-lg w-28 border-bluebutton grid place-content-center px-1.5 py-1 text-sm font-medium">
               Enroll Now

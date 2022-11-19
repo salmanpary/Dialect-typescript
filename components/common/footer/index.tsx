@@ -3,6 +3,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaFacebookMessenger } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 import styles from "./Footer.module.css";
 import { useRouter } from "next/router";
 const Footer = () => {
@@ -47,6 +48,18 @@ const Footer = () => {
                 Become a Teacher
               </div>
               <div className="flex gap-4 justify-center items-center">
+                <a href="https://instagram.com/dialect_app?igshid=YmMyMTA2M2Y=">
+                  <FaInstagram
+                    size={20}
+                    className="hover:cursor-pointer transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300 hover:text-green"
+                  />
+                </a>
+                <a href="https://www.youtube.com/channel/UCRMM5N8ukDsFvRWPZQhNYuw">
+                  <FaYoutube
+                    size={20}
+                    className="hover:cursor-pointer transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300 hover:text-green"
+                  />
+                </a>
                 <FaLinkedinIn
                   size={20}
                   className="hover:cursor-pointer transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300 hover:text-green"
@@ -59,12 +72,6 @@ const Footer = () => {
                   size={20}
                   className="hover:cursor-pointer transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300 hover:text-green"
                 />
-                <a href="https://instagram.com/dialect_app?igshid=YmMyMTA2M2Y=">
-                  <FaInstagram
-                    size={20}
-                    className="hover:cursor-pointer transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300 hover:text-green"
-                  />
-                </a>
               </div>
             </div>
           </div>

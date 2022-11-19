@@ -3,7 +3,10 @@ interface courseDetails {
   coursedetails: {
     title: string;
     description: string;
-    duration: number;
+    duration: {
+      hours: number;
+      minutes?: number;
+    };
     lessons: number;
     instructor: string;
     language: string;
@@ -12,8 +15,8 @@ interface courseDetails {
     imageurl: string;
     discountprice: number;
     price: number;
-    hours: number;
-    minutes: number;
+    hours?: number;
+    minutes?: number;
     sections: number;
     includes: {
       imageurl: string;
@@ -36,28 +39,34 @@ const Coursesdata: CourseData = {
     unity: {
       bannerimage: "/images/gamebanner.jpg",
       coursedetails: {
-        title: "Complete c# Unity Game Developer 2D",
-        description:
-          "Learn Unity in C# & Code Your First Five 2D Video Games for Web, Mac & PC. ",
-        duration: 2,
+        title: "Unity Game Development",
+        description: "Learn Unity Game Development ",
+        duration: {
+          hours: 30,
+        },
         lessons: 12,
-        instructor: "Prince",
+        instructor: "Prince Thomas",
         language: "Malayalam",
       },
       courseprice: {
         imageurl: "/images/unity.png",
-        discountprice: 1400,
-        price: 1800,
-        hours: 18,
-        minutes: 17,
+        discountprice: 23600,
+        price: 30000,
+        hours: 30,
         sections: 5,
         includes: [
-          { imageurl: "/icons/computer.svg", heading: "Access on Desktop" },
+          {
+            imageurl: "/icons/computer.svg",
+            heading: "Access on Desktop",
+          },
           {
             imageurl: "/icons/certificate.svg",
             heading: "Certificate of Completion",
           },
-          { imageurl: "/icons/infinity.svg", heading: "Full lifetime access" },
+          {
+            imageurl: "/icons/infinity.svg",
+            heading: "Full lifetime access",
+          },
         ],
       },
       coursedescription: {
@@ -69,7 +78,7 @@ const Coursesdata: CourseData = {
           " A passion and willingness to learn how to code.",
         ],
         whatyouwilllearn: [
-          "Learn C#, a powerful modern language, from scratch. No prior programming experience is necessary.",
+          "Learn Unity, a powerful modern language, from scratch. No prior programming experience is necessary.",
           "Build a solid foundation for game design and game development that will help you build your own games.",
           "Create playable game projects - good for your portfolio, or just for your own sense of achievement.",
           "Become excellent at using the Unity game engine.",
@@ -83,25 +92,32 @@ const Coursesdata: CourseData = {
         title: "Flutter",
         description:
           "A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS and Android apps",
-        duration: 2,
+        duration: {
+          hours: 30,
+        },
         lessons: 12,
         instructor: "Farhan",
         language: "Malayalam",
       },
       courseprice: {
         imageurl: "/images/flutter.png",
-        discountprice: 1400,
-        price: 1800,
-        hours: 18,
-        minutes: 17,
-        sections: 5,
+        discountprice: 23600,
+        price: 30000,
+        hours: 30,
+        sections: 24,
         includes: [
-          { imageurl: "/icons/computer.svg", heading: "Access on Desktop" },
+          {
+            imageurl: "/icons/computer.svg",
+            heading: "Access on Desktop",
+          },
           {
             imageurl: "/icons/certificate.svg",
             heading: "Certificate of Completion",
           },
-          { imageurl: "/icons/infinity.svg", heading: "Full lifetime access" },
+          {
+            imageurl: "/icons/infinity.svg",
+            heading: "Full lifetime access",
+          },
         ],
       },
       coursedescription: {
@@ -132,25 +148,32 @@ const Coursesdata: CourseData = {
         title: "The Complete Guide to React JS",
         description:
           "Build powerful, fast, user-friendly and reactive web apps ",
-        duration: 2,
+        duration: {
+          hours: 30,
+        },
         lessons: 12,
-        instructor: "Sujith",
+        instructor: "X",
         language: "Malayalam",
       },
       courseprice: {
         imageurl: "/images/reactnative.jpg",
-        discountprice: 1400,
-        price: 1800,
-        hours: 18,
-        minutes: 17,
-        sections: 5,
+        discountprice: 23600,
+        price: 30000,
+        hours: 30,
+        sections: 12,
         includes: [
-          { imageurl: "/icons/computer.svg", heading: "Access on Desktop" },
+          {
+            imageurl: "/icons/computer.svg",
+            heading: "Access on Desktop",
+          },
           {
             imageurl: "/icons/certificate.svg",
             heading: "Certificate of Completion",
           },
-          { imageurl: "/icons/infinity.svg", heading: "Full lifetime access" },
+          {
+            imageurl: "/icons/infinity.svg",
+            heading: "Full lifetime access",
+          },
         ],
       },
       coursedescription: {
@@ -176,28 +199,37 @@ const Coursesdata: CourseData = {
     django: {
       bannerimage: "/images/django.png",
       coursedetails: {
-        title: "Complete c# Unity Game Developer 2D",
+        title: "",
         description:
           "Learn Unity in C# & Code Your First Five 2D Video Games for Web, Mac & PC. ",
-        duration: 2,
+        duration: {
+          hours: 18,
+          minutes: 17,
+        },
         lessons: 12,
         instructor: "Prince",
         language: "Malayalam",
       },
       courseprice: {
         imageurl: "/images/django.png",
-        discountprice: 1400,
-        price: 1800,
+        discountprice: 30000,
+        price: 23600,
         hours: 18,
         minutes: 17,
-        sections: 5,
+        sections: 12,
         includes: [
-          { imageurl: "/icons/computer.svg", heading: "Access on Desktop" },
+          {
+            imageurl: "/icons/computer.svg",
+            heading: "Access on Desktop",
+          },
           {
             imageurl: "/icons/certificate.svg",
             heading: "Certificate of Completion",
           },
-          { imageurl: "/icons/infinity.svg", heading: "Full lifetime access" },
+          {
+            imageurl: "/icons/infinity.svg",
+            heading: "Full lifetime access",
+          },
         ],
       },
       coursedescription: {
@@ -224,7 +256,10 @@ const Coursesdata: CourseData = {
         title: "Learn and Understand Node.js",
         description:
           "Learn Unity in C# & Code Your First Five 2D Video Games for Web, Mac & PC.",
-        duration: 2,
+        duration: {
+          hours: 18,
+          minutes: 17,
+        },
         lessons: 12,
         instructor: "Prince",
         language: "Malayalam",
@@ -237,12 +272,18 @@ const Coursesdata: CourseData = {
         minutes: 17,
         sections: 5,
         includes: [
-          { imageurl: "/icons/computer.svg", heading: "Access on Desktop" },
+          {
+            imageurl: "/icons/computer.svg",
+            heading: "Access on Desktop",
+          },
           {
             imageurl: "/icons/certificate.svg",
             heading: "Certificate of Completion",
           },
-          { imageurl: "/icons/infinity.svg", heading: "Full lifetime access" },
+          {
+            imageurl: "/icons/infinity.svg",
+            heading: "Full lifetime access",
+          },
         ],
       },
       coursedescription: {
@@ -267,27 +308,35 @@ const Coursesdata: CourseData = {
     python: {
       bannerimage: "/images/python.jpg",
       coursedetails: {
-        title: " Python",
+        title: " Python Django",
         description: "A complete guide to python",
-        duration: 2,
+        duration: {
+          hours: 30,
+        },
         lessons: 12,
         instructor: " Manu Prasad",
         language: "Malayalam",
       },
       courseprice: {
         imageurl: "/images/python.jpg",
-        discountprice: 1400,
-        price: 1800,
-        hours: 18,
+        discountprice: 23600,
+        price: 30000,
+        hours: 30,
         minutes: 17,
-        sections: 5,
+        sections: 24,
         includes: [
-          { imageurl: "/icons/computer.svg", heading: "Access on Desktop" },
+          {
+            imageurl: "/icons/computer.svg",
+            heading: "Access on Desktop",
+          },
           {
             imageurl: "/icons/certificate.svg",
             heading: "Certificate of Completion",
           },
-          { imageurl: "/icons/infinity.svg", heading: "Full lifetime access" },
+          {
+            imageurl: "/icons/infinity.svg",
+            heading: "Full lifetime access",
+          },
         ],
       },
       coursedescription: {

@@ -45,13 +45,14 @@ const MobileNavbar = () => {
   return (
     <div className=" bg-white">
       <div className="shadow-md p-2 rounded-sm">
-        <div className="flex justify-between p-1">
+        <div className="flex justify-between px-3 py-1">
           <Image
-            src="/icons/dialectlogo.svg"
+            src="/icons/logo.svg"
             width={120}
             height={35}
             alt=""
             priority
+            quality={100}
             onClick={() => router.push("/")}
           />
           <Image
