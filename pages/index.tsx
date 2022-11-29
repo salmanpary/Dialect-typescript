@@ -5,6 +5,7 @@ import WhyChooseUs from "../components/home/whyus";
 import Faqsection from "../components/common/faq/Faqsection";
 import GetCritical from "../components/home/getcriticalskills";
 import Footer from "../components/common/footer";
+import { ImSpinner2 } from "react-icons/im";
 import {
   courseListingInHomePageQuery,
   NavbarLogoQuery,
@@ -77,12 +78,21 @@ interface IProps {
   faq: faqInfo;
   getcritical: criticalinfo;
   footer: footerinfo;
-
-
 }
-export default function Home(props:IProps) {
-  if (!props.coursedata) {
-    return <div>Loading...</div>;
+export default function Home(props: IProps) {
+  if (
+    !props.coursedata ||
+    !props.headerinfo ||
+    !props.whyus ||
+    !props.faq ||
+    !props.getcritical ||
+    !props.footer
+  ) {
+    return (
+      <div className="h-screen w-full justify-center flex items-center">
+        <ImSpinner2 className="animate-spin" size={80} />
+      </div>
+    );
   }
   return (
     <>
@@ -134,7 +144,7 @@ export async function getStaticProps() {
       whyus,
       faq,
       getcritical,
-      footer,
+      footer
     },
     revalidate: 1000,
   };

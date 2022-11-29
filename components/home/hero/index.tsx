@@ -40,10 +40,10 @@ const Hero = ({ headerinfo }: { headerinfo: headerinfo }) => {
           </div>
           <div className="hidden lg:block">
             <Image
-              src="/images/hero.png"
+              src={headerinfo?.image?.url}
               alt=""
-              width={700}
-              height={600}
+              width={550}
+              height={550}
               priority
             />
           </div>

@@ -81,7 +81,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { courses: item.slug },
     })
   );
-  console.log(paths);
   return {
     paths: paths,
     fallback: false,

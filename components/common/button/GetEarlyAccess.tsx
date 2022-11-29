@@ -1,10 +1,9 @@
 import React from "react";
-interface Props 
-{
-  text:string;
-  redirecturl:string;
+interface Props {
+  text: string;
+  redirecturl: string;
 }
-const GetEarlyAccess = ({ text, redirecturl }:Props) => {
+const GetEarlyAccess = ({ text, redirecturl }: Props) => {
   return (
     <>
       <a
