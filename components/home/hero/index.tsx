@@ -42,8 +42,8 @@ const Hero = ({ headerinfo }: { headerinfo: headerinfo }) => {
             <Image
               src={headerinfo?.image?.url}
               alt=""
-              width={550}
-              height={550}
+              width={620}
+              height={620}
               priority
             />
           </div>
