@@ -12,6 +12,7 @@ import {
 } from "../../../graphql/queries";
 import client from "../../../config/appolo.config";
 import { ImSpinner2 } from "react-icons/im";
+import Head from "next/head";
 interface headerinfo {
   bannerimage: {
     url: string;
@@ -75,14 +76,19 @@ const Courses = (props: CoursePropsType) => {
     );
   }
   return (
-    <CoursePage
-      navbarlogo={props.navbarlogo}
-      headerinfo={props.courseheader}
-      priceinfo={props.coursepricecard}
-      includesinfo={props.coursepricecardthisincludes}
-      descinfo={props.coursepagedescription}
-      footerinfo={props.footer}
-    />
+    <>
+      <Head>
+        <title>Coding Courses in Malayalam| Dialect India</title>
+      </Head>
+      <CoursePage
+        navbarlogo={props.navbarlogo}
+        headerinfo={props.courseheader}
+        priceinfo={props.coursepricecard}
+        includesinfo={props.coursepricecardthisincludes}
+        descinfo={props.coursepagedescription}
+        footerinfo={props.footer}
+      />
+    </>
   );
 };
 

@@ -10,6 +10,7 @@ import {
   footerSectionQuery,
 } from "../graphql/queries";
 import client from "../config/appolo.config";
+import Head from "next/head";
 interface faqInfo {
   title: string;
   subtitle: string;
@@ -39,6 +40,9 @@ interface Props {
 const faq = (props: Props) => {
   return (
     <>
+      <Head>
+        <title>Coding Courses in Malayalam| Dialect India</title>
+      </Head>
       <Navbar navbarlogo={props.navbarlogo} />
       <Faqsection faqinfo={props.faq} />
       <GetCritical criticalinfo={props.getcritical} />

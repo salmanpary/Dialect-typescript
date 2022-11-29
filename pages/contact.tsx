@@ -6,6 +6,7 @@ import Footer from "../components/common/footer";
 import client from "../config/appolo.config";
 import { NavbarLogoQuery, footerSectionQuery } from "../graphql/queries";
 import { ImSpinner2 } from "react-icons/im";
+import Head from "next/head";
 interface footerinfo {
   title: string;
   footerDescription: string;
@@ -24,6 +25,9 @@ const contact = (props: Props) => {
   }
   return (
     <>
+      <Head>
+        <title>Coding Courses in Malayalam| Dialect India</title>
+      </Head>
       <Navbar navbarlogo={props.navbarlogo} />
       <Typeform />
       <AddressCard />

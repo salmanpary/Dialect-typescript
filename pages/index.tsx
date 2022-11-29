@@ -16,6 +16,7 @@ import {
   footerSectionQuery,
 } from "../graphql/queries";
 import client from "../config/appolo.config";
+import Head from "next/head";
 interface headerinfo {
   tagline1: string;
   tagline2: string;
@@ -96,6 +97,9 @@ export default function Home(props: IProps) {
   }
   return (
     <>
+      <Head>
+        <title>Coding Courses in Malayalam| Dialect India</title>
+      </Head>
       <Navbar navbarlogo={props.navbarlogo} />
       <Hero headerinfo={props.headerinfo} />
       <CoursesToGetYouStarted courses={props.coursedata} />

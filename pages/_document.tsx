@@ -32,7 +32,6 @@ class MyDocument extends Document {
   render(): ReactElement {
     return (
       <Html>
-        <title>Coding Courses in Malayalam| Dialect India</title>
         <Head>
           <link rel="shortcut icon" href="/icons/favic.png" />
           <meta
