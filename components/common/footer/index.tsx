@@ -12,9 +12,6 @@ interface footerinfo {
 }
 const Footer = ({ footerinfo }: { footerinfo: footerinfo }) => {
   const router = useRouter();
-  if (!footerinfo) {
-    return <div>loading...</div>;
-  }
   return (
     <footer
       className={`${styles.footer} flex  flex-col justify-center    rounded-lg sm:px-20 p-10 mt-10 w-full h-full `}

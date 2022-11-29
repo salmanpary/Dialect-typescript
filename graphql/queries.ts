@@ -183,7 +183,7 @@ export const coursePagePriceCardThisIncludesQuery = gql`
 `;
 export const coursePageDescriptionQuery = gql`
   query coursePageDescriptionQuery($slug: String!) {
-    coursesCollection(where: { slug: $slug },limit:1) {
+    coursesCollection(where: { slug: $slug }, limit: 1) {
       items {
         description {
           json

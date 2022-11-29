@@ -55,7 +55,7 @@ const CoursePage = ({
   includesinfo,
   descinfo,
   footerinfo,
-}:CoursePropsType) => {
+}: CoursePropsType) => {
   return (
     <>
       <div className="hidden lg:block">

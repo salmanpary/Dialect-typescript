@@ -47,7 +47,9 @@ const CourseDetails = ({
               className="max-h-4 mt-0.5 md:mt-0.5"
               alt=""
             />
-            <span className="whitespace-nowrap text-sm">{numberofsections} sections</span>
+            <span className="whitespace-nowrap text-sm">
+              {numberofsections} sections
+            </span>
           </div>
         </div>
         <div>

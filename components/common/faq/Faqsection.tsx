@@ -10,7 +10,7 @@ interface faqInfo {
     }[];
   };
 }
-const Faqsection = ({ faqinfo }:{faqinfo:faqInfo}) => {
+const Faqsection = ({ faqinfo }: { faqinfo: faqInfo }) => {
   return (
     <>
       <div className="p-5 sm:px-28 my-10">

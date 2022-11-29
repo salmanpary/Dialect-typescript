@@ -11,12 +11,12 @@ interface priceinfo {
   buttontext: string;
   redirecturl: string;
   price: number;
-  includes:{
-    icon:{
-      url:string;
-    }
-    shortText:string;
-  }[]
+  includes: {
+    icon: {
+      url: string;
+    };
+    shortText: string;
+  }[];
 }
 const CoursePrice = ({
   imageurl,
@@ -28,7 +28,7 @@ const CoursePrice = ({
   includes,
   buttontext,
   redirecturl,
-}:priceinfo) => {
+}: priceinfo) => {
   return (
     <div className="w-screen sm:w-[340px] rounded-2xl shadow-xl border-2 border-grey p-6 bg-white">
       <Image

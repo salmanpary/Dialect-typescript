@@ -5,6 +5,7 @@ import AddressCard from "../components/contact/AddressCard";
 import Footer from "../components/common/footer";
 import client from "../config/appolo.config";
 import { NavbarLogoQuery, footerSectionQuery } from "../graphql/queries";
+import { ImSpinner2 } from "react-icons/im";
 interface footerinfo {
   title: string;
   footerDescription: string;
@@ -13,7 +14,14 @@ interface Props {
   navbarlogo: string;
   footer: footerinfo;
 }
-const contact = (props:Props) => {
+const contact = (props: Props) => {
+  if (!props.footer || !props.navbarlogo) {
+    return (
+      <div className="h-screen w-full justify-center flex items-center">
+        <ImSpinner2 className="animate-spin" size={80} />
+      </div>
+    );
+  }
   return (
     <>
       <Navbar navbarlogo={props.navbarlogo} />

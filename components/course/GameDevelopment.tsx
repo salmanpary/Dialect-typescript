@@ -46,7 +46,12 @@ interface CoursePropsType {
   includesinfo: includesinfo[];
   descinfo: descinfo;
 }
-const GameDevelopment = ({ headerinfo, priceinfo, includesinfo, descinfo }:CoursePropsType) => {
+const GameDevelopment = ({
+  headerinfo,
+  priceinfo,
+  includesinfo,
+  descinfo,
+}: CoursePropsType) => {
   const router = useRouter();
 
   return (

@@ -10,7 +10,6 @@ interface FaqsProps {
 }
 
 export default function Faqs({ faqinfo }: FaqsProps) {
-
   //add two field id and open to faqinfo
   const [faqs, setFaqs] = useState(
     faqinfo?.map((faq, index) => {

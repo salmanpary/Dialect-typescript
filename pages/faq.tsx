@@ -30,14 +30,13 @@ interface footerinfo {
   title: string;
   footerDescription: string;
 }
-interface Props{
-  navbarlogo:string;
-  faq:faqInfo;
-  getcritical:criticalinfo;
-  footer:footerinfo;
-  
+interface Props {
+  navbarlogo: string;
+  faq: faqInfo;
+  getcritical: criticalinfo;
+  footer: footerinfo;
 }
-const faq = (props:Props) => {
+const faq = (props: Props) => {
   return (
     <>
       <Navbar navbarlogo={props.navbarlogo} />

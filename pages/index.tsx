@@ -144,7 +144,7 @@ export async function getStaticProps() {
       whyus,
       faq,
       getcritical,
-      footer
+      footer,
     },
     revalidate: 1000,
   };

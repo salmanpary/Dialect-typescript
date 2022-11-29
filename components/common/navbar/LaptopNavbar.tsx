@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-const LaptopNavbar = ({navbarlogo}:{navbarlogo:string}) => {
+const LaptopNavbar = ({ navbarlogo }: { navbarlogo: string }) => {
   const router = useRouter();
   const NavbarData = [
     {

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-interface ButtonProps{
+interface ButtonProps {
   text: string;
   redirecturl: string;
 }
-const LearningButton = ({ text, redirecturl }:ButtonProps) => {
+const LearningButton = ({ text, redirecturl }: ButtonProps) => {
   return (
     <>
       <a href={redirecturl}>

@@ -9,10 +9,10 @@ interface CoursePropsType {
   };
   heading: string;
   instructor: string;
-  time:{
+  time: {
     hours: number;
     minutes: number;
-  }
+  };
   sections: number;
   discountprice: number;
   price: number;
@@ -27,7 +27,7 @@ const CourseCard = ({
   discountprice,
   price,
   path,
-}:CoursePropsType) => {
+}: CoursePropsType) => {
   const router = useRouter();
 
   return (

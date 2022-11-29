@@ -3,20 +3,21 @@ import CourseCard from "./CourseCard";
 interface CoursePropsType {
   slug: string;
   homepageImage: {
-    url: string;  
-   
+    url: string;
   };
- coursename: string;
+  coursename: string;
   instructor: string;
- 
-    hours: number;
-    minutes: number;
-
+  hours: number;
+  minutes: number;
   numberofsections: number;
   discountprice: number;
   originalprice: number;
 }
-const CoursesToGetYouStarted = ({ courses }: { courses: CoursePropsType[] }) => {
+const CoursesToGetYouStarted = ({
+  courses,
+}: {
+  courses: CoursePropsType[];
+}) => {
   return (
     <>
       <div className="mt-10">

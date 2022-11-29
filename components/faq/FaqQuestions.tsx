@@ -10,7 +10,7 @@ interface faqInfo {
     }[];
   };
 }
-const Faqsection = ({ faqinfo }:{faqinfo:faqInfo}) => {
+const Faqsection = ({ faqinfo }: { faqinfo: faqInfo }) => {
   return (
     <>
       <div className="sm:bg-gradient-to-l sm:from-wrappergrey bg-right-top bg-none pt-10   px-6 sm:px-36 sm:pt-5 ">
