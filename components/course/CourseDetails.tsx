@@ -35,7 +35,7 @@ const CourseDetails = ({
               alt=""
             />
             <span className="whitespace-nowrap text-sm">
-              {hours && `${hours} Hours`} &nbsp;
+              {hours && `${hours} Hours`} {"  "}
               {minutes && `${minutes}min`}
             </span>
           </div>
