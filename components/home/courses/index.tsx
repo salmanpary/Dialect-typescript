@@ -39,8 +39,8 @@ const CoursesToGetYouStarted = ({
                   minutes: item.minutes,
                 }}
                 sections={item.numberofsections}
-                discountprice={item.originalprice}
-                price={item.discountprice}
+                discountprice={item.discountprice}
+                price={item.originalprice}
                 path={item.slug}
               />
             );
