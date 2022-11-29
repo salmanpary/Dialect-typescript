@@ -11,6 +11,7 @@ import {
   coursePageDescriptionQuery,
 } from "../../../graphql/queries";
 import client from "../../../config/appolo.config";
+import { ImSpinner2 } from "react-icons/im";
 interface headerinfo {
   bannerimage: {
     url: string;
@@ -59,6 +60,20 @@ interface CoursePropsType {
   footer: footerinfo;
 }
 const Courses = (props: CoursePropsType) => {
+  if (
+    !props.navbarlogo ||
+    !props.courseheader ||
+    !props.coursepricecard ||
+    !props.coursepricecardthisincludes ||
+    !props.coursepagedescription ||
+    !props.footer
+  ) {
+    return (
+      <div className="h-screen w-full justify-center flex items-center">
+        <ImSpinner2 className="animate-spin" size={80} />
+      </div>
+    );
+  }
   return (
     <CoursePage
       navbarlogo={props.navbarlogo}
