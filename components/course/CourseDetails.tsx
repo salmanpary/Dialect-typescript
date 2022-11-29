@@ -3,19 +3,20 @@ import React from "react";
 interface CourseDetailsProps {
   title: string;
   description: string;
-  duration: {
-    hours?: number;
-    minutes?: number;
-  };
-  lessons: number;
+
+  hours?: number;
+  minutes?: number;
+
+  numberofsections: number;
   instructor: string;
   language: string;
 }
 const CourseDetails = ({
   title,
   description,
-  duration,
-  lessons,
+  hours,
+  minutes,
+  numberofsections,
   instructor,
   language,
 }: CourseDetailsProps) => {
@@ -34,8 +35,8 @@ const CourseDetails = ({
               alt=""
             />
             <span className="whitespace-nowrap text-sm">
-              {duration.hours} Hours &nbsp;
-              {duration.minutes && `${duration.minutes}min`}
+              {hours && `${hours} Hours &nbsp;`}
+              {minutes && `${minutes}min`}
             </span>
           </div>
           <div className="flex gap-2">
@@ -46,7 +47,7 @@ const CourseDetails = ({
               className="max-h-4 mt-0.5 md:mt-0.5"
               alt=""
             />
-            <span className="whitespace-nowrap text-sm">{lessons} lessons</span>
+            <span className="whitespace-nowrap text-sm">{numberofsections} sections</span>
           </div>
         </div>
         <div>

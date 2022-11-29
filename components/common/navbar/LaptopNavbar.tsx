@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-const LaptopNavbar = () => {
+const LaptopNavbar = ({navbarlogo}:{navbarlogo:string}) => {
   const router = useRouter();
   const NavbarData = [
     {
@@ -30,7 +30,7 @@ const LaptopNavbar = () => {
         <div className="flex justify-between pt-2 px-36">
           <div className="cursor-pointer">
             <Image
-              src="/icons/logo.svg"
+              src={navbarlogo}
               width={180}
               height={180}
               alt=""

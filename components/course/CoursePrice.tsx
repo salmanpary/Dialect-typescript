@@ -2,17 +2,21 @@ import React from "react";
 import CoursePriceStyle from "./CoursePrice.module.css";
 import StartLearning from "../common/button/StartLearning";
 import Image from "next/image";
-interface CoursePriceProps {
-  imageurl: string;
+interface priceinfo {
   discountprice: number;
-  price: number;
-  hours?: number;
-  minutes?: number;
+  hours: number;
+  minutes: number;
   sections: number;
-  includes: {
-    imageurl: string;
-    heading: string;
-  }[];
+  imageurl: string;
+  buttontext: string;
+  redirecturl: string;
+  price: number;
+  includes:{
+    icon:{
+      url:string;
+    }
+    shortText:string;
+  }[]
 }
 const CoursePrice = ({
   imageurl,
@@ -22,7 +26,9 @@ const CoursePrice = ({
   minutes,
   sections,
   includes,
-}: CoursePriceProps) => {
+  buttontext,
+  redirecturl,
+}:priceinfo) => {
   return (
     <div className="w-screen sm:w-[340px] rounded-2xl shadow-xl border-2 border-grey p-6 bg-white">
       <Image
@@ -67,7 +73,7 @@ const CoursePrice = ({
           </div>
         </div>
       </div>
-      <StartLearning />
+      <StartLearning text={buttontext} redirecturl={redirecturl} />
       <div>
         <h1 className="text-courseheading font-bold px-2 text-xl py-1 mt-5">
           This Includes:
@@ -76,14 +82,14 @@ const CoursePrice = ({
           return (
             <div className="flex gap-2 px-2 py-1" key={index}>
               <Image
-                src={item.imageurl}
+                src={item?.icon?.url}
                 alt=""
                 className="max-h-4 max-w-[30px] mt-1"
                 width={20}
                 height={20}
               />
               <span className="font-semibold whitespace-nowrap">
-                {item.heading}
+                {item?.shortText}
               </span>
             </div>
           );

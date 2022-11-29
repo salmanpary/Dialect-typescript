@@ -2,103 +2,99 @@ import React, { useEffect } from "react";
 import CourseDescription from "./CourseDescription";
 import CourseDetails from "./CourseDetails";
 import CoursePrice from "./CoursePrice";
-import Coursesdata from "./data/Coursesdata";
 import { useRouter } from "next/router";
 import Image from "next/image";
-//declare type of coursedata
-interface courseDetails {
-  bannerimage: string;
-  coursedetails: {
-    title: string;
-    description: string;
-    duration: {
-      hours?: number;
-      minutes?: number;
-    };
-    lessons: number;
-    instructor: string;
-    language: string;
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+interface headerinfo {
+  bannerimage: {
+    url: string;
   };
-  courseprice: {
-    imageurl: string;
-    discountprice: number;
-    price: number;
-    hours?: number;
-    minutes?: number;
-    sections: number;
-    includes: {
-      imageurl: string;
-      heading: string;
-    }[];
+  coursename: string;
+  smallDescription: string;
+  hours: number;
+  minutes: number;
+  numberofsections: number;
+  instructor: string;
+  language: string;
+}
+interface priceinfo {
+  originalprice: number;
+  discountprice: number;
+  hours: number;
+  minutes: number;
+  numberofsections: number;
+  homepageImage: {
+    url: string;
   };
-  coursedescription: {
-    description: string[];
-    requirements: string[];
-    whatyouwilllearn: string[];
+  pricecardButtontext: string;
+  pricecardButtonredirecturl: string;
+}
+interface includesinfo {
+  icon: {
+    url: string;
+  };
+  shortText: string;
+}
+interface descinfo {
+  description: {
+    json: any;
   };
 }
-const GameDevelopment = () => {
+interface CoursePropsType {
+  headerinfo: headerinfo;
+  priceinfo: priceinfo;
+  includesinfo: includesinfo[];
+  descinfo: descinfo;
+}
+const GameDevelopment = ({ headerinfo, priceinfo, includesinfo, descinfo }:CoursePropsType) => {
   const router = useRouter();
-  const [coursedata, setcoursedata] = React.useState<courseDetails | null>(
-    null
-  );
-  useEffect(() => {
-    if (router.query.courses) {
-      setcoursedata(
-        Coursesdata.coursedetails[
-          router.query.courses as keyof typeof Coursesdata.coursedetails
-        ]
-      );
-    }
-  }, [router.query.courses]);
+
   return (
     <>
-      {coursedata ? (
-        <div className="px-20 pt-4">
-          <div className="">
-            <div className="relative">
-              <Image
-                fill
-                className="object-center object-cover pointer-events-none rounded-lg -z-20"
-                src={coursedata.bannerimage}
-                alt=""
-              />
-              <div className="relative z-1 py-20 px-10">
-                <CourseDetails
-                  title={coursedata.coursedetails.title}
-                  description={coursedata.coursedetails.description}
-                  duration={coursedata.coursedetails.duration}
-                  lessons={coursedata.coursedetails.lessons}
-                  instructor={coursedata.coursedetails.instructor}
-                  language={coursedata.coursedetails.language}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="flex">
-            <div className="basis-3/4 pt-8">
-              <CourseDescription
-                coursedescription={coursedata.coursedescription.description}
-                requirements={coursedata.coursedescription.requirements}
-                whatyouwilllearn={coursedata.coursedescription.whatyouwilllearn}
-              />
-            </div>
-            <div className="mt-[-100px] mr-2">
-              <CoursePrice
-                price={coursedata.courseprice.price}
-                discountprice={coursedata.courseprice.discountprice}
-                hours={coursedata.courseprice.hours}
-                minutes={coursedata.courseprice.minutes}
-                sections={coursedata.courseprice.sections}
-                imageurl={coursedata.courseprice.imageurl}
-                includes={coursedata.courseprice.includes}
+      <div className="px-20 pt-4">
+        <div className="">
+          <div className="relative">
+            <Image
+              fill
+              className="object-center object-cover pointer-events-none rounded-lg -z-20"
+              src={headerinfo?.bannerimage.url}
+              alt=""
+            />
+            <div className="relative z-1 py-11 px-10">
+              <CourseDetails
+                title={headerinfo?.coursename}
+                description={headerinfo?.smallDescription}
+                hours={headerinfo?.hours}
+                minutes={headerinfo?.minutes}
+                numberofsections={headerinfo?.numberofsections}
+                instructor={headerinfo?.instructor}
+                language={headerinfo?.language}
               />
             </div>
           </div>
         </div>
-      ) : (
-        "loading..."
-      )}
+        <div className="flex">
+          <div className="basis-3/4 pt-8">
+            <div className="prose text-black marker:text-black">
+              {descinfo &&
+                documentToReactComponents(descinfo?.description?.json)}
+            </div>
+          </div>
+          <div className="mt-[-100px] mr-7">
+            <CoursePrice
+              price={priceinfo?.originalprice}
+              discountprice={priceinfo?.discountprice}
+              hours={priceinfo?.hours}
+              minutes={priceinfo?.minutes}
+              sections={priceinfo?.numberofsections}
+              imageurl={priceinfo?.homepageImage?.url}
+              buttontext={priceinfo?.pricecardButtontext}
+              redirecturl={priceinfo?.pricecardButtonredirecturl}
+              includes={includesinfo}
+            />
+          </div>
+        </div>
+      </div>
     </>
   );
 };

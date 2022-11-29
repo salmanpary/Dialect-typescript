@@ -1,9 +1,175 @@
-import React from 'react'
-import CoursePage from '../../../components/course'
-const Courses = () => {
-  return (
-    <CoursePage/>
-  )
+import React from "react";
+import CoursePage from "../../../components/course";
+import { GetStaticPaths } from "next";
+import {
+  NavbarLogoQuery,
+  footerSectionQuery,
+  coursePathsQuery,
+  coursePageHeaderQuery,
+  coursePagePriceCardQuery,
+  coursePagePriceCardThisIncludesQuery,
+  coursePageDescriptionQuery,
+} from "../../../graphql/queries";
+import client from "../../../config/appolo.config";
+interface headerinfo {
+  bannerimage: {
+    url: string;
+  };
+  coursename: string;
+  smallDescription: string;
+  hours: number;
+  minutes: number;
+  numberofsections: number;
+  instructor: string;
+  language: string;
 }
+interface footerinfo {
+  title: string;
+  footerDescription: string;
+}
+interface priceinfo {
+  originalprice: number;
+  discountprice: number;
+  hours: number;
+  minutes: number;
+  numberofsections: number;
+  homepageImage: {
+    url: string;
+  };
+  pricecardButtontext: string;
+  pricecardButtonredirecturl: string;
+}
+interface includesinfo {
+  icon: {
+    url: string;
+  };
+  shortText: string;
+}
+interface descinfo {
+  description: {
+    json: any;
+  };
+}
+interface CoursePropsType {
+  navbarlogo: string;
+  courseheader: headerinfo;
+  coursepricecard: priceinfo;
+  coursepricecardthisincludes: includesinfo[];
+  coursepagedescription: descinfo;
+  footer: footerinfo;
+}
+const Courses = (props: CoursePropsType) => {
+  return (
+    <CoursePage
+      navbarlogo={props.navbarlogo}
+      headerinfo={props.courseheader}
+      priceinfo={props.coursepricecard}
+      includesinfo={props.coursepricecardthisincludes}
+      descinfo={props.coursepagedescription}
+      footerinfo={props.footer}
+    />
+  );
+};
 
-export default Courses
+export default Courses;
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { data } = await client.query({
+    query: coursePathsQuery,
+  });
+  const paths = data?.coursesCollection?.items.map(
+    (item: { slug: string }) => ({
+      params: { courses: item.slug },
+    })
+  );
+  console.log(paths);
+  return {
+    paths: paths,
+    fallback: false,
+  };
+};
+export const getStaticProps = async ({
+  params,
+}: {
+  params: {
+    courses: string;
+  };
+}) => {
+  const slug = params.courses;
+
+  if (!slug) {
+    return {
+      notFound: true,
+    };
+  }
+  const { data: navbardata } = await client.query({
+    query: NavbarLogoQuery,
+  });
+
+  const { data: courseheaderdata } = await client.query({
+    query: coursePageHeaderQuery,
+    variables: { slug },
+  });
+
+  if (courseheaderdata?.coursesCollection?.items?.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
+  const { data: coursepricecarddata } = await client.query({
+    query: coursePagePriceCardQuery,
+    variables: { slug },
+  });
+  if (coursepricecarddata?.coursesCollection?.items?.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
+  const { data: coursepricecardthisincludesdata } = await client.query({
+    query: coursePagePriceCardThisIncludesQuery,
+    variables: { slug },
+  });
+  if (
+    coursepricecardthisincludesdata?.coursePriceCardThisIncludesCollection
+      ?.items?.length === 0
+  ) {
+    return {
+      notFound: true,
+    };
+  }
+  const { data: coursepagedescriptiondata } = await client.query({
+    query: coursePageDescriptionQuery,
+    variables: { slug },
+  });
+  if (
+    coursepagedescriptiondata?.coursePageDescriptionCollection?.items
+      ?.length === 0
+  ) {
+    return {
+      notFound: true,
+    };
+  }
+  const { data: footerdata } = await client.query({
+    query: footerSectionQuery,
+  });
+
+  const navbarlogo = navbardata?.homePageCollection?.items[0]?.logo.url;
+  const courseheader = courseheaderdata?.coursesCollection?.items[0];
+  const coursepricecard = coursepricecarddata?.coursesCollection?.items[0];
+
+  const coursepricecardthisincludes =
+    coursepricecardthisincludesdata?.includesCoursesCollection?.items;
+  const coursepagedescription =
+    coursepagedescriptiondata?.coursesCollection?.items[0];
+  const footer = footerdata?.footerSection;
+  return {
+    props: {
+      navbarlogo,
+      courseheader,
+      coursepricecard,
+      coursepricecardthisincludes,
+      coursepagedescription,
+      footer,
+    },
+    revalidate: 10,
+  };
+};

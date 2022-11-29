@@ -6,19 +6,26 @@ import { FaInstagram } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import styles from "./Footer.module.css";
 import { useRouter } from "next/router";
-const Footer = () => {
+interface footerinfo {
+  title: string;
+  footerDescription: string;
+}
+const Footer = ({ footerinfo }: { footerinfo: footerinfo }) => {
   const router = useRouter();
+  if (!footerinfo) {
+    return <div>loading...</div>;
+  }
   return (
     <footer
       className={`${styles.footer} flex  flex-col justify-center    rounded-lg sm:px-20 p-10 mt-10 w-full h-full `}
     >
       <div className="flex flex-col gap-y-4 ">
-        <div className="font-bold text-center sm:text-left">DIALECT</div>
+        <div className="font-bold text-center sm:text-left">
+          {footerinfo?.title}
+        </div>
         <div className="flex flex-col justify-center items-center gap-y-4 sm:justify-between sm:items-start sm:gap-y-0 sm:flex-row">
           <div className="font-medium text-base opacity-40 sm:w-[50ch] text-center w-[30ch] sm:text-left">
-            We at dialect take you through technical learning in your mother
-            tongue to help you build a better conceptual clarity thus making it
-            easier to comprehend.
+            {footerinfo?.footerDescription}
           </div>
           <div className="flex gap-x-[7.438rem] flex-col sm:flex-row justify-center items-center flex-wrap gap-y-4 sm:justify-evenly">
             <div className="flex sm:flex-col text-[#454545] font-medium gap-2 flex-row gap-x-20">

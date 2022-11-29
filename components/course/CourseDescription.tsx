@@ -12,7 +12,7 @@ const CourseDescription = ({
   return (
     <div>
       <h1 className="font-extrabold text-2xl py-2">Course Description</h1>
-      {coursedescription.map((item, index) => {
+      {coursedescription?.map((item, index) => {
         return (
           <p
             className="font-semibold text-base text-courseheading sm:pr-28 py-2 leading-7"

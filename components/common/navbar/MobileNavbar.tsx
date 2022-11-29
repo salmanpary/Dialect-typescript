@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-const MobileNavbar = () => {
+const MobileNavbar = ({navbarlogo}:{navbarlogo:string}) => {
   const [show, setshow] = useState(false);
   const OpenMenu = () => {
     setshow(!show);
@@ -47,7 +47,7 @@ const MobileNavbar = () => {
       <div className="shadow-md p-2 rounded-sm">
         <div className="flex justify-between px-3 py-1">
           <Image
-            src="/icons/logo.svg"
+            src={navbarlogo}
             width={120}
             height={35}
             alt=""

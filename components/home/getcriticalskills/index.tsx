@@ -1,7 +1,13 @@
 import React from "react";
 import GetEarlyAccess from "../../common/button/GetEarlyAccess";
 import Image from "next/image";
-const GetCritical = () => {
+interface criticalinfo {
+  title: string;
+  subtitle: string;
+  buttontext: string;
+  buttonRedirectUrl: string;
+}
+const GetCritical = ({ criticalinfo }: { criticalinfo: criticalinfo }) => {
   return (
     <>
       <div className="sm:px-28">
@@ -24,14 +30,16 @@ const GetCritical = () => {
 
             <div className="flex justify-center items-center flex-col gap-y-8">
               <div className="text-white font-extrabold md:text-4xl lg:text-[3.5rem] text-2xl">
-                Get critical career skills
+                {criticalinfo?.title}
               </div>
               <div className="text-white sm:w-[40ch] w-[30ch]">
-                Take the next step toward your personal and professional goals
-                with Dialect..
+                {criticalinfo?.subtitle}
               </div>
               <div>
-                <GetEarlyAccess />
+                <GetEarlyAccess
+                  text={criticalinfo?.buttontext}
+                  redirecturl={criticalinfo?.buttonRedirectUrl}
+                />
               </div>
             </div>
           </div>
