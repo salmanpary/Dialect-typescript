@@ -33,24 +33,24 @@ const CourseCard = ({
   const renderRating = (rating: number) => {
     switch (rating) {
       case 1:
-        return <Image alt="" src="/icons/onestar.png" width={80} height={80} className="max-h-3"/>;
+        return <Image alt="" src="/icons/onestar.png" width={90} height={90} />;
       case 2:
-        return <Image alt="" src="/icons/twostar.png" width={80} height={80} />;
+        return <Image alt="" src="/icons/twostar.png" width={90} height={90} />;
       case 3:
         return (
-          <Image alt="" src="/icons/threestar.png" width={80} height={80} />
+          <Image alt="" src="/icons/threestar.png" width={90} height={90} />
         );
       case 4:
         return (
-          <Image alt="" src="/icons/fourstar.png" width={80} height={80} />
+          <Image alt="" src="/icons/fourstar.png" width={90} height={90} />
         );
       case 5:
         return (
-          <Image alt="" src="/icons/fivestar.png" width={80} height={80} />
+          <Image alt="" src="/icons/fivestar.png" width={90} height={90} />
         );
       default:
         return (
-          <Image alt="" src="/icons/fivestar.png" width={80} height={80} />
+          <Image alt="" src="/icons/fivestar.png" width={90} height={90} />
         );
     }
   };
@@ -101,7 +101,10 @@ const CourseCard = ({
             />
             <div className="text-sm whitespace-nowrap">{sections} sections</div>
           </div>
+          <div className="mt-0.5">
+
           {renderRating(rating)}
+          </div>
         </div>
 
         <div className="text-base text-coursediscount px-2 py-1 h-8">

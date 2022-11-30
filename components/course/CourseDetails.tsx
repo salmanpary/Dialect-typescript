@@ -25,7 +25,7 @@ const CourseDetails = ({
   const renderRating = (rating: number) => {
     switch (rating) {
       case 1:
-        return <Image alt="" src="/icons/onestar.png" width={80} height={80} className="max-h-3"/>;
+        return <Image alt="" src="/icons/onestar.png" width={80} height={80}/>;
       case 2:
         return <Image alt="" src="/icons/twostar.png" width={80} height={80} />;
       case 3:
@@ -38,7 +38,7 @@ const CourseDetails = ({
         );
       case 5:
         return (
-          <Image alt="" src="/icons/fivestar.png" width={80} height={80} />
+          <Image alt="" src="/icons/fivestar.png" width={80} height={80}/>
         );
       default:
         return (
@@ -78,7 +78,7 @@ const CourseDetails = ({
             </span>
           </div>
         </div>
-        <div>
+        <div className="ml-2 mt-0.5">
          {renderRating(rating)}
         </div>
       </div>
