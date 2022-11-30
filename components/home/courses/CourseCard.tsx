@@ -33,24 +33,24 @@ const CourseCard = ({
   const renderRating = (rating: number) => {
     switch (rating) {
       case 1:
-        return <Image alt="" src="/icons/onestar.png" width={90} height={90} />;
+        return <Image alt="" src="/icons/onestar.png" width={90} height={15.94} />;
       case 2:
-        return <Image alt="" src="/icons/twostar.png" width={90} height={90} />;
+        return <Image alt="" src="/icons/twostar.png" width={90} height={15.94} />;
       case 3:
         return (
-          <Image alt="" src="/icons/threestar.png" width={90} height={90} />
+          <Image alt="" src="/icons/threestar.png" width={90} height={15.94} />
         );
       case 4:
         return (
-          <Image alt="" src="/icons/fourstar.png" width={90} height={90} />
+          <Image alt="" src="/icons/fourstar.png" width={90} height={15.94} />
         );
       case 5:
         return (
-          <Image alt="" src="/icons/fivestar.png" width={90} height={90} />
+          <Image alt="" src="/icons/fivestar.png" width={90} height={15.94} />
         );
       default:
         return (
-          <Image alt="" src="/icons/fivestar.png" width={90} height={90} />
+          <Image alt="" src="/icons/fivestar.png" width={90} height={15.94} />
         );
     }
   };

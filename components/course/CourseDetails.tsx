@@ -23,26 +23,29 @@ const CourseDetails = ({
   rating,
 }: CourseDetailsProps) => {
   const renderRating = (rating: number) => {
+    if(!rating){
+      return <div>loading..</div>
+    }
     switch (rating) {
       case 1:
-        return <Image alt="" src="/icons/onestar.png" width={80} height={80}/>;
+        return <Image alt="" src="/icons/onestar.png" width={80} height={20} />;
       case 2:
-        return <Image alt="" src="/icons/twostar.png" width={80} height={80} />;
+        return <Image alt="" src="/icons/twostar.png" width={80} height={20} />;
       case 3:
         return (
-          <Image alt="" src="/icons/threestar.png" width={80} height={80} />
+          <Image alt="" src="/icons/threestar.png" width={80} height={20} />
         );
       case 4:
         return (
-          <Image alt="" src="/icons/fourstar.png" width={80} height={80} />
+          <Image alt="" src="/icons/fourstar.png" width={80} height={20} />
         );
       case 5:
         return (
-          <Image alt="" src="/icons/fivestar.png" width={80} height={80}/>
+          <Image alt="" src="/icons/fivestar.png" width={80} height={20} />
         );
       default:
         return (
-          <Image alt="" src="/icons/fivestar.png" width={80} height={80} />
+          <Image alt="" src="/icons/fivestar.png" width={80} height={20} />
         );
     }
   };
@@ -78,9 +81,10 @@ const CourseDetails = ({
             </span>
           </div>
         </div>
-        <div className="ml-2 mt-[1px]">
-         {renderRating(rating)}
-        </div>
+<div className="ml-2 mt-[3px]">
+
+        {renderRating(rating)}
+</div>
       </div>
       <div className="flex justify-between pt-1 px-2">
         <div className="flex gap-2 text-sm">
