@@ -12,6 +12,7 @@ interface headerinfo {
   numberofsections: number;
   instructor: string;
   language: string;
+  rating: number;
 }
 interface footerinfo {
   title: string;

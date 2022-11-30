@@ -16,6 +16,7 @@ interface headerinfo {
   numberofsections: number;
   instructor: string;
   language: string;
+  rating: number;
 }
 interface priceinfo {
   originalprice: number;
@@ -74,6 +75,7 @@ const GameDevelopment = ({
                 numberofsections={headerinfo?.numberofsections}
                 instructor={headerinfo?.instructor}
                 language={headerinfo?.language}
+                rating={headerinfo?.rating}
               />
             </div>
           </div>

@@ -12,6 +12,7 @@ interface CoursePropsType {
   numberofsections: number;
   discountprice: number;
   originalprice: number;
+  rating: number;
 }
 const CoursesToGetYouStarted = ({
   courses,
@@ -42,6 +43,7 @@ const CoursesToGetYouStarted = ({
                 discountprice={item.discountprice}
                 price={item.originalprice}
                 path={item.slug}
+                rating={item.rating}
               />
             );
           })}

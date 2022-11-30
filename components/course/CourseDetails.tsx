@@ -10,6 +10,7 @@ interface CourseDetailsProps {
   numberofsections: number;
   instructor: string;
   language: string;
+  rating: number;
 }
 const CourseDetails = ({
   title,
@@ -19,7 +20,32 @@ const CourseDetails = ({
   numberofsections,
   instructor,
   language,
+  rating,
 }: CourseDetailsProps) => {
+  const renderRating = (rating: number) => {
+    switch (rating) {
+      case 1:
+        return <Image alt="" src="/icons/onestar.png" width={80} height={80} className="max-h-3"/>;
+      case 2:
+        return <Image alt="" src="/icons/twostar.png" width={80} height={80} />;
+      case 3:
+        return (
+          <Image alt="" src="/icons/threestar.png" width={80} height={80} />
+        );
+      case 4:
+        return (
+          <Image alt="" src="/icons/fourstar.png" width={80} height={80} />
+        );
+      case 5:
+        return (
+          <Image alt="" src="/icons/fivestar.png" width={80} height={80} />
+        );
+      default:
+        return (
+          <Image alt="" src="/icons/fivestar.png" width={80} height={80} />
+        );
+    }
+  };
   return (
     <div className="bg-coursedetails text-white rounded-2xl py-10 px-5 w-auto sm:w-[600px]  bg-opacity-100 ">
       <h1 className="font-semibold text-2xl new4:text-lg">{title}</h1>
@@ -53,13 +79,7 @@ const CourseDetails = ({
           </div>
         </div>
         <div>
-          <Image
-            src="/icons/rating.svg"
-            alt=""
-            width={80}
-            height={80}
-            className="mt-1 ml-3"
-          />
+         {renderRating(rating)}
         </div>
       </div>
       <div className="flex justify-between pt-1 px-2">

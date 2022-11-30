@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import CourseCardStyle from "./CourseCard.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -17,6 +17,7 @@ interface CoursePropsType {
   discountprice: number;
   price: number;
   path: string;
+  rating: number;
 }
 const CourseCard = ({
   imageurl,
@@ -27,8 +28,32 @@ const CourseCard = ({
   discountprice,
   price,
   path,
+  rating,
 }: CoursePropsType) => {
-  const router = useRouter();
+  const renderRating = (rating: number) => {
+    switch (rating) {
+      case 1:
+        return <Image alt="" src="/icons/onestar.png" width={80} height={80} className="max-h-3"/>;
+      case 2:
+        return <Image alt="" src="/icons/twostar.png" width={80} height={80} />;
+      case 3:
+        return (
+          <Image alt="" src="/icons/threestar.png" width={80} height={80} />
+        );
+      case 4:
+        return (
+          <Image alt="" src="/icons/fourstar.png" width={80} height={80} />
+        );
+      case 5:
+        return (
+          <Image alt="" src="/icons/fivestar.png" width={80} height={80} />
+        );
+      default:
+        return (
+          <Image alt="" src="/icons/fivestar.png" width={80} height={80} />
+        );
+    }
+  };
 
   return (
     <>
@@ -76,8 +101,7 @@ const CourseCard = ({
             />
             <div className="text-sm whitespace-nowrap">{sections} sections</div>
           </div>
-
-          <Image alt="" src="/icons/rating.svg" width={80} height={80} />
+          {renderRating(rating)}
         </div>
 
         <div className="text-base text-coursediscount px-2 py-1 h-8">

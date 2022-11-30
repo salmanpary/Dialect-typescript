@@ -42,6 +42,7 @@ interface CoursePropsType {
   numberofsections: number;
   discountprice: number;
   originalprice: number;
+  rating: number;
 }
 interface CardProps {
   title: string;
