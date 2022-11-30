@@ -78,7 +78,7 @@ const CourseDetails = ({
             </span>
           </div>
         </div>
-        <div className="ml-2 mt-0.5">
+        <div className="ml-2 mt-[1px]">
          {renderRating(rating)}
         </div>
       </div>
