@@ -34,9 +34,13 @@ const CourseCard = ({
   const renderRating = (rating: number) => {
     switch (rating) {
       case 1:
-        return <Image alt="" src="/icons/onestar.png" width={90} height={15.94} />;
+        return (
+          <Image alt="" src="/icons/onestar.png" width={90} height={15.94} />
+        );
       case 2:
-        return <Image alt="" src="/icons/twostar.png" width={90} height={15.94} />;
+        return (
+          <Image alt="" src="/icons/twostar.png" width={90} height={15.94} />
+        );
       case 3:
         return (
           <Image alt="" src="/icons/threestar.png" width={90} height={15.94} />
@@ -58,9 +62,12 @@ const CourseCard = ({
 
   return (
     <>
-    <Link href={`/courses/${path}`}>
-
-      <div className="border-2 border-grey rounded-2xl p-2 w-[365px] h-[380px] shadow-lg cursor-pointer" >
+      <div
+        className="border-2 border-grey rounded-2xl p-2 w-[365px] h-[380px] shadow-lg cursor-pointer"
+        onClick={() => {
+          router.push("/courses" + path);
+        }}
+      >
         <Image
           src={imageurl.url}
           width={342.56}
@@ -104,10 +111,7 @@ const CourseCard = ({
             />
             <div className="text-sm whitespace-nowrap">{sections} sections</div>
           </div>
-          <div className="mt-0.5">
-
-          {renderRating(rating)}
-          </div>
+          <div className="mt-0.5">{renderRating(rating)}</div>
         </div>
 
         <div className="text-base text-coursediscount px-2 py-1 h-8">
@@ -127,7 +131,6 @@ const CourseCard = ({
           </div>
         </div>
       </div>
-    </Link>
     </>
   );
 };
