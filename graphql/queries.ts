@@ -134,7 +134,7 @@ export const coursePathsQuery = gql`
 `;
 export const coursePageHeaderQuery = gql`
   query coursePageQuery($slug: String!) {
-    coursesCollection(where: { slug: $slug }) {
+    coursesCollection(where: { slug: $slug }, limit: 1) {
       items {
         bannerimage {
           url
@@ -153,7 +153,7 @@ export const coursePageHeaderQuery = gql`
 `;
 export const coursePagePriceCardQuery = gql`
   query coursePagePriceCardQuery($slug: String!) {
-    coursesCollection(where: { slug: $slug }) {
+    coursesCollection(where: { slug: $slug }, limit: 1) {
       items {
         homepageImage {
           url
@@ -177,6 +177,22 @@ export const coursePagePriceCardThisIncludesQuery = gql`
           url
         }
         shortText
+      }
+    }
+  }
+`;
+export const coursePageThisIncludesQuery = gql`
+  query coursePageThisIncludesQuery($slug: String!) {
+    coursesCollection(where: { slug: $slug }, limit: 1) {
+      items {
+        thisIncludesCollection {
+          items {
+            icon {
+              url
+            }
+            shortText
+          }
+        }
       }
     }
   }
