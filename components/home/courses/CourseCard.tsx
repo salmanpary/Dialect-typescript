@@ -30,6 +30,7 @@ const CourseCard = ({
   path,
   rating,
 }: CoursePropsType) => {
+  const router = useRouter();
   const renderRating = (rating: number) => {
     switch (rating) {
       case 1:
@@ -57,7 +58,9 @@ const CourseCard = ({
 
   return (
     <>
-      <div className="border-2 border-grey rounded-2xl p-2 w-[365px] h-[380px] shadow-lg">
+    <Link href={`/courses/${path}`}>
+
+      <div className="border-2 border-grey rounded-2xl p-2 w-[365px] h-[380px] shadow-lg cursor-pointer" >
         <Image
           src={imageurl.url}
           width={342.56}
@@ -124,6 +127,7 @@ const CourseCard = ({
           </div>
         </div>
       </div>
+    </Link>
     </>
   );
 };
