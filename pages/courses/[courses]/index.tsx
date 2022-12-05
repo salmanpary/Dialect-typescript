@@ -171,7 +171,7 @@ export const getStaticProps = async ({
   }
   const { data: footerdata } = await client.query({
     query: footerSectionQuery,
-  });
+  })
 
   const navbarlogo = navbardata?.homePageCollection?.items[0]?.logo.url;
   const courseheader = courseheaderdata?.coursesCollection?.items[0];
