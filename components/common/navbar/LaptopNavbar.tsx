@@ -10,6 +10,10 @@ const LaptopNavbar = ({ navbarlogo }: { navbarlogo: string }) => {
       link: "/",
     },
     {
+      name: "COURSES",
+      link: "/courses",
+    },
+    {
       name: "FAQ",
       link: "/faq",
     },
