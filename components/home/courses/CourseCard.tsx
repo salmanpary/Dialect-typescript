@@ -66,7 +66,7 @@ const CourseCard = ({
           width={342.56}
           height={182.82}
           alt=""
-          className="rounded-xl max-h-[182.82px] max-w-[342.56px]"
+          className="rounded-xl min-h-[182.82px] max-h-[182.82px]  max-w-[342.56px]"
         />
         <h1 className="font-bold text-base p-2 h-12">{heading}</h1>
         <div className="flex gap-2 p-2 text-sm">
