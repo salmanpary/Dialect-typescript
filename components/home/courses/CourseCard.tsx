@@ -65,7 +65,7 @@ const CourseCard = ({
       <div
         className="border-2 border-grey rounded-2xl p-2 w-[365px] h-[380px] shadow-lg cursor-pointer"
         onClick={() => {
-          router.push("/courses" + path);
+          router.push("courses/" + path);
         }}
       >
         <Image
