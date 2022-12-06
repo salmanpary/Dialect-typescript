@@ -4,21 +4,7 @@ import { useRouter } from "next/router";
 const MobileNavbar = ({ navbarlogo }: { navbarlogo: string }) => {
   const [show, setshow] = useState(false);
   const OpenMenu = () => {
-    setshow(!show);
-  };
-  const setImageurl = (isopen: boolean) => {
-    if (isopen) {
-      return "/icons/navbarclose.svg";
-    } else {
-      return "/icons/navbaropen.svg";
-    }
-  };
-  const setwidthandheight = (isopen: boolean) => {
-    if (isopen) {
-      return 21;
-    } else {
-      return 25;
-    }
+    setshow((show) => !show);
   };
   const setMenu = (isopen: boolean) => {
     if (isopen) {
@@ -59,13 +45,23 @@ const MobileNavbar = ({ navbarlogo }: { navbarlogo: string }) => {
             quality={100}
             onClick={() => router.push("/")}
           />
-          <Image
-            src={setImageurl(show)}
-            alt=""
-            width={setwidthandheight(show)}
-            height={setwidthandheight(show)}
-            onClick={OpenMenu}
-          />
+          {show ? (
+            <Image
+              src="/icons/navbarclose.svg"
+              alt=""
+              width={21}
+              height={21}
+              onClick={OpenMenu}
+            />
+          ) : (
+            <Image
+              src={"/icons/navbaropen.svg"}
+              alt=""
+              width={25}
+              height={25}
+              onClick={OpenMenu}
+            />
+          )}
         </div>
         <div className={`${setMenu(show)}`}>
           <ul className="p-1">
