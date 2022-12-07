@@ -258,16 +258,19 @@ export const coursesPageFullDataQuery = gql`
       }
       coursesCollection {
         items {
-          homepageImage {
-            url
-          }
-          originalprice
-          discountprice
+          coursename
+          instructor
           hours
           minutes
           numberofsections
-          pricecardButtontext
-          pricecardButtonredirecturl
+          rating
+          originalprice
+          discountprice
+          homepageButtontext
+          slug
+          homepageImage {
+            url
+          }
         }
       }
     }
@@ -298,18 +301,18 @@ export const HomePageCourseListingQuery = gql`
   }
 `;
 export const faqPageDataQuery = gql`
-query faqPageFullDataEntryQuery {
-  faqPageFullData(id: "7uImLBZHH1uADLE3Cqf4Ea") {
-    title
-    subtitle
-    faqsCollection{
-      items{
-        question
-        answer
+  query faqPageFullDataEntryQuery {
+    faqPageFullData(id: "7uImLBZHH1uADLE3Cqf4Ea") {
+      title
+      subtitle
+      faqsCollection {
+        items {
+          question
+          answer
+        }
       }
-    }
-    seo{
-      metaTitle
+      seo {
+        metaTitle
         metaDescription
         canonicalTag
         metaKeywords
@@ -317,11 +320,9 @@ query faqPageFullDataEntryQuery {
         metaAuthor
         metaTheme
         metaRefresh
-      
-    }
- 
-    # add the fields you want to query
-  }
-}
+      }
 
-`
+      # add the fields you want to query
+    }
+  }
+`;

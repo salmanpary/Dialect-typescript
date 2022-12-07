@@ -67,6 +67,7 @@ const CourseCard = ({
         onClick={() => {
           router.push("courses/" + path);
         }}
+        key={heading}
       >
         <Image
           src={imageurl.url}
