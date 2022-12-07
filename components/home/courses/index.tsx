@@ -16,15 +16,17 @@ interface CoursePropsType {
 }
 const CoursesToGetYouStarted = ({
   courses,
+ coursetitle
 }: {
   courses: CoursePropsType[];
+  coursetitle:string;
 }) => {
   return (
     <>
       <div className="mt-10">
         <div className="pb-10 text-center">
           <h1 className="font-extrabold text-2xl sm:text-4xl text-courseheading">
-            Courses
+            {coursetitle}
           </h1>
         </div>
         <div className="flex flex-wrap gap-10 justify-center items-center">

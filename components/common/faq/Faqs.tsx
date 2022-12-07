@@ -35,7 +35,7 @@ export default function Faqs({ faqinfo }: FaqsProps) {
         <div id="faqs">
           <section className={`${styles["faqs"]}`}>
             <div className={styles["content"]}>
-              {faqs.map((item) => (
+              {faqs?.map((item) => (
                 <Faq
                   key={item.id}
                   question={item.question}

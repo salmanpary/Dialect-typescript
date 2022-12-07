@@ -19,7 +19,7 @@ const MetaTags: FC<MetaTagsProps> = ({ props }) => {
 
   return (
     <Head>
-      <title>{props?.title}</title>
+      <title>{props?.title ||"Coding Courses in Malayalam| Dialect India"}</title>
       <meta name="description" content={props?.metaDescription} />
       <link rel="canonical" href={props?.canonicalTag || URL} />
       <meta name="keywords" content={props?.metaKeywords?.join(", ")} />

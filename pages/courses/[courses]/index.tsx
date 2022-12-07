@@ -9,10 +9,13 @@ import {
   coursePagePriceCardQuery,
   coursePagePriceCardThisIncludesQuery,
   coursePageDescriptionQuery,
+  CoursePageSeoQuery,
 } from "../../../graphql/queries";
 import client from "../../../config/appolo.config";
 import { ImSpinner2 } from "react-icons/im";
 import Head from "next/head";
+import MetaTags from "../../../components/common/seo/meta-tags";
+import type { MetaTagsForSeo } from "../../../types/courses.types";
 interface headerinfo {
   bannerimage: {
     url: string;
@@ -60,6 +63,7 @@ interface CoursePropsType {
   coursepricecardthisincludes: includesinfo[];
   coursepagedescription: descinfo;
   footer: footerinfo;
+  seo: MetaTagsForSeo;
 }
 const Courses = (props: CoursePropsType) => {
   if (
@@ -78,9 +82,7 @@ const Courses = (props: CoursePropsType) => {
   }
   return (
     <>
-      <Head>
-        <title>Coding Courses in Malayalam| Dialect India</title>
-      </Head>
+      <MetaTags props={props.seo} />
       <CoursePage
         navbarlogo={props.navbarlogo}
         headerinfo={props.courseheader}
@@ -171,7 +173,11 @@ export const getStaticProps = async ({
   }
   const { data: footerdata } = await client.query({
     query: footerSectionQuery,
-  })
+  });
+  const { data: seodata } = await client.query({
+    query: CoursePageSeoQuery,
+    variables: { slug },
+  });
 
   const navbarlogo = navbardata?.homePageCollection?.items[0]?.logo.url;
   const courseheader = courseheaderdata?.coursesCollection?.items[0];
@@ -182,6 +188,7 @@ export const getStaticProps = async ({
   const coursepagedescription =
     coursepagedescriptiondata?.coursesCollection?.items[0];
   const footer = footerdata?.footerSection;
+  const seo = seodata?.coursesCollection.items[0].metaTagsForSeo;
   return {
     props: {
       navbarlogo,
@@ -190,6 +197,7 @@ export const getStaticProps = async ({
       coursepricecardthisincludes,
       coursepagedescription,
       footer,
+      seo,
     },
     revalidate: 10,
   };

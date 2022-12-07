@@ -8,9 +8,12 @@ import {
   faqPageQuery,
   getCriticalHomePageQuery,
   footerSectionQuery,
+  faqPageDataQuery,
 } from "../graphql/queries";
 import client from "../config/appolo.config";
 import Head from "next/head";
+import MetaTags from "../components/common/seo/meta-tags";
+import type { MetaTagsForSeo } from "../types/courses.types";
 interface faqInfo {
   title: string;
   subtitle: string;
@@ -36,13 +39,12 @@ interface Props {
   faq: faqInfo;
   getcritical: criticalinfo;
   footer: footerinfo;
+  seo: MetaTagsForSeo;
 }
 const faq = (props: Props) => {
   return (
     <>
-      <Head>
-        <title>Coding Courses in Malayalam| Dialect India</title>
-      </Head>
+      <MetaTags props={props.seo} />
       <Navbar navbarlogo={props.navbarlogo} />
       <Faqsection faqinfo={props.faq} />
       <GetCritical criticalinfo={props.getcritical} />
@@ -65,9 +67,13 @@ export async function getStaticProps() {
   const { data: footerdata } = await client.query({
     query: footerSectionQuery,
   });
+  const { data: faqpagedata } = await client.query({
+    query: faqPageDataQuery,
+  });
 
   const navbarlogo = navbardata?.homePageCollection?.items[0]?.logo.url;
-  const faq = faqdata?.faqPageFullDataCollection?.items[0];
+  const faq = faqpagedata?.faqPageFullData;
+  const seo = faqpagedata?.faqPageFullData?.seo;
   const getcritical =
     getcriticaldata?.getCriticalSectionHomePageCollection?.items[0];
   const footer = footerdata?.footerSection;
@@ -77,6 +83,7 @@ export async function getStaticProps() {
       faq,
       getcritical,
       footer,
+      seo,
     },
     revalidate: 1000,
   };

@@ -4,16 +4,15 @@ import CoursesToGetYouStarted from "../../components/home/courses";
 import Footer from "../../components/common/footer";
 import { ImSpinner2 } from "react-icons/im";
 import {
-  courseListingInHomePageQuery,
   NavbarLogoQuery,
-  HeroQuery,
-  WhyDialectQuery,
-  faqHomePageQuery,
-  getCriticalHomePageQuery,
   footerSectionQuery,
+  coursesPageFullDataQuery,
 } from "../../graphql/queries";
 import client from "../../config/appolo.config";
 import Head from "next/head";
+import MetaTags from "../../components/common/seo/meta-tags";
+import type { MetaTagsForSeo } from "../../types/courses.types";
+
 interface headerinfo {
   tagline1: string;
   tagline2: string;
@@ -74,9 +73,16 @@ interface IProps {
 
   coursedata: CoursePropsType[];
   footer: footerinfo;
+  coursetitle: string;
+  seo: MetaTagsForSeo;
 }
 export default function Courses(props: IProps) {
-  if (!props.coursedata || !props.navbarlogo || !props.footer) {
+  if (
+    !props.coursedata ||
+    !props.navbarlogo ||
+    !props.footer ||
+    !props.coursetitle
+  ) {
     return (
       <div className="h-screen w-full justify-center flex items-center">
         <ImSpinner2 className="animate-spin" size={80} />
@@ -85,28 +91,33 @@ export default function Courses(props: IProps) {
   }
   return (
     <>
-      <Head>
-        <title>Coding Courses in Malayalam| Dialect India</title>
-      </Head>
+     <MetaTags props={props.seo}/>
       <Navbar navbarlogo={props.navbarlogo} />
 
-      <CoursesToGetYouStarted courses={props.coursedata} />
+      <CoursesToGetYouStarted
+        coursetitle={props.coursetitle}
+        courses={props.coursedata}
+      />
 
       <Footer footerinfo={props.footer} />
     </>
   );
 }
 export async function getStaticProps() {
-  const { data: coursesdata } = await client.query({
-    query: courseListingInHomePageQuery,
-  });
   const { data: navbardata } = await client.query({
     query: NavbarLogoQuery,
   });
   const { data: footerdata } = await client.query({
     query: footerSectionQuery,
   });
-  const coursedata = coursesdata?.coursesCollection?.items;
+  const { data: coursespagedata } = await client.query({
+    query: coursesPageFullDataQuery,
+  });
+
+  const coursedata =
+    coursespagedata?.coursesPageFullData?.coursesCollection?.items;
+  const coursetitle = coursespagedata?.coursesPageFullData?.title;
+  const seo = coursespagedata?.coursesPageFullData?.seo;
   const navbarlogo = navbardata?.homePageCollection?.items?.[0]?.logo.url;
   const footer = footerdata?.footerSection;
   return {
@@ -114,6 +125,8 @@ export async function getStaticProps() {
       coursedata,
       navbarlogo,
       footer,
+      coursetitle,
+      seo,
     },
     revalidate: 1000,
   };
