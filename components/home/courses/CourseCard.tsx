@@ -14,8 +14,8 @@ interface CoursePropsType {
     minutes: number;
   };
   sections: number;
-  discountprice: number;
-  price: number;
+  discountprice: string;
+  price: string;
   path: string;
   rating: number;
 }
@@ -93,10 +93,8 @@ const CourseCard = ({
             />
             <div className="flex gap-1 text-sm">
               <span className="whitespace-nowrap">
-                {(time.hours || time.hours === 0) && (
-                  <span>{time.hours} Hr</span>
-                )}{" "}
-                {(time.minutes || time.minutes === 0) && (
+                {time.hours && time.hours !== 0 && <span>{time.hours} Hr</span>}{" "}
+                {time.minutes && time.minutes !== 0 && (
                   <span>{time.minutes} Min</span>
                 )}
               </span>

@@ -3,14 +3,14 @@ import CoursePriceStyle from "./CoursePrice.module.css";
 import StartLearning from "../common/button/StartLearning";
 import Image from "next/image";
 interface priceinfo {
-  discountprice: number;
+  discountprice: string;
   hours: number;
   minutes: number;
   sections: number;
   imageurl: string;
   buttontext: string;
   redirecturl: string;
-  price: number;
+  price: string;
   includes: {
     icon: {
       url: string;
@@ -41,9 +41,11 @@ const CoursePrice = ({
 
       <div className="flex justify-between p-4">
         <div className="flex flex-col">
-          <div className="text-base text-coursediscount px-2 whitespace-nowrap">
-            <span className={CoursePriceStyle.strikethrough}>₹ {price}</span>
-          </div>
+          {price && (
+            <div className="text-base text-coursediscount px-2 whitespace-nowrap">
+              <span className={CoursePriceStyle.strikethrough}>₹ {price}</span>
+            </div>
+          )}
           <div className="text-2xl sm:text-3xl font-bold text-courseheading whitespace-nowrap">
             ₹ {discountprice}
           </div>
@@ -58,7 +60,8 @@ const CoursePrice = ({
               height={20}
             />
             <span>
-              {hours && `${hours}hr`} {minutes && `${minutes}min`}
+              {(hours && hours !== 0) && `${hours}hr`}{" "}
+              {(minutes && minutes !== 0) && `${minutes}min`}
             </span>
           </div>
           <div className="flex gap-2">

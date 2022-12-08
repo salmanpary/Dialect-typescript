@@ -23,8 +23,8 @@ const CourseDetails = ({
   rating,
 }: CourseDetailsProps) => {
   const renderRating = (rating: number) => {
-    if(!rating){
-      return <div>loading..</div>
+    if (!rating) {
+      return <div>loading..</div>;
     }
     switch (rating) {
       case 1:
@@ -64,8 +64,8 @@ const CourseDetails = ({
               alt=""
             />
             <span className="whitespace-nowrap text-sm">
-              {hours && `${hours} Hours`} {"  "}
-              {minutes && `${minutes}min`}
+              {hours && hours !== 0 && `${hours} Hours`} {"  "}
+              {minutes && minutes !== 0 && `${minutes}min`}
             </span>
           </div>
           <div className="flex gap-2">
@@ -81,10 +81,7 @@ const CourseDetails = ({
             </span>
           </div>
         </div>
-<div className="ml-2 mt-[3px]">
-
-        {renderRating(rating)}
-</div>
+        <div className="ml-2 mt-[3px]">{renderRating(rating)}</div>
       </div>
       <div className="flex justify-between pt-1 px-2">
         <div className="flex gap-2 text-sm">

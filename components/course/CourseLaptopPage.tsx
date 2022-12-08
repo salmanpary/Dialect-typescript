@@ -20,8 +20,8 @@ interface footerinfo {
   footerDescription: string;
 }
 interface priceinfo {
-  originalprice: number;
-  discountprice: number;
+  originalprice: string;
+  discountprice:string;
   hours: number;
   minutes: number;
   numberofsections: number;

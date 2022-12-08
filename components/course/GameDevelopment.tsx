@@ -19,8 +19,8 @@ interface headerinfo {
   rating: number;
 }
 interface priceinfo {
-  originalprice: number;
-  discountprice: number;
+  originalprice:string;
+  discountprice: string;
   hours: number;
   minutes: number;
   numberofsections: number;

@@ -10,16 +10,16 @@ interface CoursePropsType {
   hours: number;
   minutes: number;
   numberofsections: number;
-  discountprice: number;
-  originalprice: number;
+  discountprice: string;
+  originalprice: string;
   rating: number;
 }
 const CoursesToGetYouStarted = ({
   courses,
- coursetitle
+  coursetitle,
 }: {
   courses: CoursePropsType[];
-  coursetitle:string;
+  coursetitle: string;
 }) => {
   return (
     <>
